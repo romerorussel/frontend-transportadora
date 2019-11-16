@@ -1,0 +1,13 @@
+.form-cadastro form{
+    width: 40%;
+    margin: 50px auto;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.input-small {
+    width: 50%;
+}
+.input-margin-top{
+    margin-top: 20px;
+}

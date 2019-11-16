@@ -1,0 +1,33 @@
+#aside-left{
+    float: left !important;
+    min-width: 90%;
+    min-height: 100%;
+}
+h3.title-left{
+    font-weight: normal;
+}
+
+form.filtro-pesquisa{
+    margin-top: 50px;
+}
+
+.cards-transportadoras{
+    min-width: 90%;
+}
+.mat-card {
+    margin: 20px 0 20px 0;
+}
+.cards-transportadoras table tr td{
+    text-align: center;
+    padding: 5px 40px 5px 40px;
+}
+.header-app{
+    min-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.header-app button{
+    width: 300px;
+    height: 50px;
+}

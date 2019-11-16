@@ -1,62 +1,6 @@
-<mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile
-      [colspan]="tiles[2].cols"
-      [rowspan]="tiles[2].rows"
-      [style.background]="tiles[2].color">
-      <header class="header-app">
-        <h1>Transportadoras |</h1>
-        <button mat-raised-button color="primary">Cadastre sua transportadora</button>
-      </header>
-  </mat-grid-tile>
-
-  <mat-grid-tile
-      [colspan]="tiles[0].cols"
-      [rowspan]="tiles[0].rows"
-      [style.background]="tiles[0].color">
-
-      <aside id="aside-left">
-        <h3 class="title-left">Transportadoras</h3>
-        <mat-chip-list aria-label="Resultados transportadoras">
-            <mat-chip color="primary" selected>Resultados</mat-chip>
-        </mat-chip-list>
-        <div class="filtros">
-        
-          <form class="filtro-pesquisa">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Favorite food" value="Sushi">
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                  <mat-icon>search</mat-icon>
-              </button>
-            </mat-form-field>
-          </form>
-        </div>
-      </aside>
-  </mat-grid-tile>
-
-  <mat-grid-tile
-      [colspan]="tiles[1].cols"
-      [rowspan]="tiles[1].rows"
-      [style.background]="tiles[1].color">
-
-      <div class="cards-transportadoras">
-        <mat-card>
-          <table>
-            <tbody>
-              <tr>
-                <td>Logo</td>
-                <td><a href="#">Xadrez - Rodoaéreo</a></td>
-                <td>(81)3458-1087 (81)3456-2331</td>
-                <td>Whatsapp Fale agora: <a href="#">(81)3456-2331</a></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>54762-610</td>
-                <td>xadrezrodoaereo@teste.com.br</td>
-              </tr>
-            </tbody>
-          </table>
-        </mat-card>
-      </div>
-  </mat-grid-tile>
-
-</mat-grid-list>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <a routerLink="/" class="link-toolbar">Início</a>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

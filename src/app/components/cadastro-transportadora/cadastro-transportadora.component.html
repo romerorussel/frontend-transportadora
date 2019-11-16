@@ -1,0 +1,89 @@
+<div class="form-cadastro">
+    <form (ngSubmit)="onSubmit()" #formulario="ngForm">
+        <mat-form-field>
+                <input matInput email placeholder="Digite seu e-mail" #email="ngModel" [(ngModel)]="transportadoraModel.email" name="email" required>
+                <mat-error *ngIf="email">Digite um email válido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Nome" maxlength="50" required #nome="ngModel" [(ngModel)]="transportadoraModel.nome" name="nome">
+            <mat-hint align="end">{{nome.value?.length || 0}}/50</mat-hint>
+            <mat-error *ngIf="nome.invalid">O campo nome é obrigatório</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput placeholder="Empresa" maxlength="50" required #empresa="ngModel" [(ngModel)]="transportadoraModel.empresa" name="empresa">
+            <mat-hint align="end">{{empresa.value?.length || 0}}/50</mat-hint>
+            <mat-error *ngIf="empresa.invalid">O campo empresa é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Telefone (xx)xxxx-xxxx" mask="(00)0000-0000" minlength="8" maxlength="14" required #telefone="ngModel" [(ngModel)]="transportadoraModel.telefone" name ="telefone">
+            <mat-error *ngIf="telefone.invalid">O campo telefone é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Celular" #celular="ngModel" [(ngModel)]="transportadoraModel.celular" name="celular" minlength="9" mask="(00)00000-0000" maxlength="14">
+                <mat-error *ngIf="celular.invalid">O número de celular está inválido verifique se digitou corretamente</mat-error>
+        </mat-form-field>
+
+        <mat-form-field >
+                <input matInput placeholder="Whatsapp" mask="(00)00000-0000" minlength="9" maxlength="14" #whatsapp="ngModel" [(ngModel)]="transportadoraModel.whatsapp" name="whatsapp">
+                <mat-error *ngIf="whatsapp.invalid">O número do whatsapp está inválido verifique se digitou corretamente</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input-small">
+            <mat-select placeholder="Modal" required #modal="ngModel" [(ngModel)]="transportadoraModel.modal" name="modal">
+              <mat-option value="Rodoviário">Rodoviário</mat-option>
+              <mat-option value="Aquaviário">Aquaviário</mat-option>
+              <mat-option value="Aéreo">Aéreo</mat-option>       
+            </mat-select>
+            <mat-hint align="end">Selecione o modal de transporte</mat-hint>
+            <mat-error *ngIf="modal.invalid">O campo modal é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input-small">
+                <input matInput placeholder="CEP" (focusout)="buscarEndereco()" mask="00000-000" minlength="8" required #cep="ngModel" [(ngModel)]="transportadoraModel.cep" name="cep">
+                <mat-hint align="end">{{cep.value?.length || 0}}/9</mat-hint>
+                <mat-error *ngIf="cep.invalid">O campo cep é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input-small">
+            <mat-select placeholder="UF" required #uf="ngModel" [(ngModel)]="transportadoraModel.uf" name="uf">
+                <mat-option *ngFor="let mesorregiao of mesorregioes" [value]="mesorregiao">{{mesorregiao}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="uf.invalid">O campo uf é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Cidade" maxlength="50" required #cidade="ngModel" [(ngModel)]="transportadoraModel.cidade" name="cidade">
+                <mat-hint align="end">{{cidade.value?.length || 0}}/50</mat-hint>
+                <mat-error *ngIf="cidade.invalid">O campo cidade é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Bairro" maxlength="50" required #bairro="ngModel" [(ngModel)]="transportadoraModel.bairro" name="bairro">
+                <mat-hint align="end">{{bairro.value?.length || 0}}/50</mat-hint>
+                <mat-error *ngIf="bairro.invalid">O campo bairro é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Rua / Avenida" maxlength="50" required #rua="ngModel" [(ngModel)]="transportadoraModel.rua" name="rua">
+                <mat-hint align="end">{{rua.value?.length || 0}}/50</mat-hint>
+                <mat-error *ngIf="rua.invalid">O campo rua / avenida é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Número" maxlength="5" required #numero="ngModel" [(ngModel)]="transportadoraModel.numero" name="numero">
+                <mat-hint align="end">{{numero.value?.length || 0}}/5</mat-hint>
+                <mat-error *ngIf="numero.invalid">O campo número é obrigatório</mat-error>
+        </mat-form-field>
+
+        <input id="singleFile" type="file" class="input-margin-top" #arquivo="ngModel" [(ngModel)]="transportadoraModel.arquivo" name="arquivo" (change)="upload($event)" />
+
+        <mat-checkbox class="input-margin-top" required #termo="ngModel" [(ngModel)]="transportadoraModel.termo" name="termo">Eu aceito os termos de serviço</mat-checkbox>
+        <mat-error *ngIf="termo.invalid">É necessário concordar com os termos de serviço para prosseguir com o cadastro</mat-error>
+
+        <button type="submit" mat-raised-button color="primary" class="input-margin-top" [disabled]="!formulario.form.valid">Cadastrar-se agora!</button>
+    </form>
+  </div>
