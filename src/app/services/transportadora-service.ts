@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Transportadora } from '../models/transportadora';
+import { FiltroPesquisa } from '../models/filtro-pesquisa';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class TransportadoraService {
   private baseURL =  'http://localhost:8080/api';
-  private header = new HttpHeaders();
   constructor(private http: HttpClient) { }
 
   getTransportadoraPorId(id: number){
@@ -37,5 +37,8 @@ export class TransportadoraService {
 
   atualizar(id: number, transportadoraAtualizar: Transportadora){
     return this.http.post(`${this.baseURL}/transportadora/atualizar/${id}`, transportadoraAtualizar)
+  }
+  pesquisaFiltro(filtro: FiltroPesquisa){
+    return this.http.post(`${this.baseURL}/transportadora/pesquisar`, filtro);
   }
 }

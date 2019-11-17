@@ -13,3 +13,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .input-margin-top{
     margin-top: 20px;
 }
+.container-modal-cep-uf{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+button.btn-cd-tp{
+    height: 60px !important;
+}
+i.media-social-icon{
+    max-width: 30px;
+    height: auto;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2%;
+    margin-top: -5px;
+
+}
+.marginTop10 {
+    margin-top: 20px;
+}

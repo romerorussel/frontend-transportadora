@@ -1,6 +1,6 @@
 #aside-left{
-    float: left !important;
     min-width: 90%;
+    max-width: 90%;
     min-height: 100%;
 }
 .semTransportadoras{
@@ -16,6 +16,10 @@
 }
 h3.title-left{
     font-weight: normal;
+    display: flex;
+    flex:1;
+    align-self: center;
+    padding-top: 10%;
 }
 
 form.filtro-pesquisa{
@@ -45,4 +49,38 @@ td.telefoneWpp{
 .header-app button{
     width: 300px;
     height: 50px;
+}
+.width100{
+    min-width: 100px;
+}
+.numero-resultados{
+    font-size: 9pt;
+    font-weight: bold;
+    display: flex;
+    align-self: baseline;
+    flex: 1;
+    margin-bottom: 10%;
+}
+.list-filtros{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: -10%;
+}
+.filtros h4{
+    text-align: left;
+}
+.filtros ul {
+    text-align: left;
+}
+.filtros ul li{
+    list-style: none;
+    color: #0d47a1;
+    font-size: 11pt;
+    margin: 0 0 10px 0;
+
+}
+.filtros ul li:hover{
+    cursor: pointer;
 }

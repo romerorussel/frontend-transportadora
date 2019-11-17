@@ -37,7 +37,7 @@ export class CadastroTransportadoraComponent implements OnInit {
         this.toastrService.success('Seu cadastro foi realizado com sucesso.', 'Aeehoo!', {
           timeOut: 5000
         });
-
+        
       }else{
 
         //Retorna mensagem do tipo Toast para o usuário informando que o cadastro não foi realizado com sucesso

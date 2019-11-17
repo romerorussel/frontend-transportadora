@@ -6,13 +6,13 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="Nome" maxlength="50" required #nome="ngModel" [(ngModel)]="transportadoraModel.nome" name="nome">
+            <input matInput placeholder="Nome" minlength="4" maxlength="50" required #nome="ngModel" [(ngModel)]="transportadoraModel.nome" name="nome">
             <mat-hint align="end">{{nome.value?.length || 0}}/50</mat-hint>
             <mat-error *ngIf="nome.invalid">O campo nome é obrigatório</mat-error>
         </mat-form-field>
         
         <mat-form-field>
-            <input matInput placeholder="Empresa" maxlength="50" required #empresa="ngModel" [(ngModel)]="transportadoraModel.empresa" name="empresa">
+            <input matInput placeholder="Empresa" minlength="4" maxlength="50" required #empresa="ngModel" [(ngModel)]="transportadoraModel.empresa" name="empresa">
             <mat-hint align="end">{{empresa.value?.length || 0}}/50</mat-hint>
             <mat-error *ngIf="empresa.invalid">O campo empresa é obrigatório</mat-error>
         </mat-form-field>
@@ -31,30 +31,30 @@
                 <input matInput placeholder="Whatsapp" mask="(00)00000-0000" minlength="9" maxlength="14" #whatsapp="ngModel" [(ngModel)]="transportadoraModel.whatsapp" name="whatsapp">
                 <mat-error *ngIf="whatsapp.invalid">O número do whatsapp está inválido verifique se digitou corretamente</mat-error>
         </mat-form-field>
+        <div class="container-modal-cep-uf">
+                <mat-form-field>
+                        <mat-select placeholder="Modal" required #modal="ngModel" [(ngModel)]="transportadoraModel.modal" name="modal">
+                                <mat-option value="Rodoviário">Rodoviário</mat-option>
+                                <mat-option value="Aquaviário">Aquaviário</mat-option>
+                                <mat-option value="Aéreo">Aéreo</mat-option>       
+                        </mat-select>
+                        <mat-hint align="end">Selecione o modal de transporte</mat-hint>
+                        <mat-error *ngIf="modal.invalid">O campo modal é obrigatório</mat-error>
+                </mat-form-field>
 
-        <mat-form-field class="input-small">
-            <mat-select placeholder="Modal" required #modal="ngModel" [(ngModel)]="transportadoraModel.modal" name="modal">
-              <mat-option value="Rodoviário">Rodoviário</mat-option>
-              <mat-option value="Aquaviário">Aquaviário</mat-option>
-              <mat-option value="Aéreo">Aéreo</mat-option>       
-            </mat-select>
-            <mat-hint align="end">Selecione o modal de transporte</mat-hint>
-            <mat-error *ngIf="modal.invalid">O campo modal é obrigatório</mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                        <input matInput placeholder="CEP" (focusout)="buscarEndereco()" mask="00000-000" minlength="8" required #cep="ngModel" [(ngModel)]="transportadoraModel.cep" name="cep">
+                        <mat-hint align="end">{{cep.value?.length || 0}}/9</mat-hint>
+                        <mat-error *ngIf="cep.invalid">O campo cep é obrigatório</mat-error>
+                </mat-form-field>
 
-        <mat-form-field class="input-small">
-                <input matInput placeholder="CEP" (focusout)="buscarEndereco()" mask="00000-000" minlength="8" required #cep="ngModel" [(ngModel)]="transportadoraModel.cep" name="cep">
-                <mat-hint align="end">{{cep.value?.length || 0}}/9</mat-hint>
-                <mat-error *ngIf="cep.invalid">O campo cep é obrigatório</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="input-small">
-            <mat-select placeholder="UF" required #uf="ngModel" [(ngModel)]="transportadoraModel.uf" name="uf">
-                <mat-option *ngFor="let mesorregiao of mesorregioes" [value]="mesorregiao">{{mesorregiao}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="uf.invalid">O campo uf é obrigatório</mat-error>
-        </mat-form-field>
-
+                <mat-form-field>
+                        <mat-select placeholder="UF" required #uf="ngModel" [(ngModel)]="transportadoraModel.uf" name="uf">
+                                <mat-option *ngFor="let mesorregiao of mesorregioes" [value]="mesorregiao">{{mesorregiao}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="uf.invalid">O campo uf é obrigatório</mat-error>
+                </mat-form-field>
+        </div>
         <mat-form-field>
                 <input matInput placeholder="Cidade" maxlength="50" required #cidade="ngModel" [(ngModel)]="transportadoraModel.cidade" name="cidade">
                 <mat-hint align="end">{{cidade.value?.length || 0}}/50</mat-hint>
@@ -84,6 +84,6 @@
         <mat-checkbox class="input-margin-top" required #termo="ngModel" [(ngModel)]="transportadoraModel.termo" name="termo">Eu aceito os termos de serviço</mat-checkbox>
         <mat-error *ngIf="termo.invalid">É necessário concordar com os termos de serviço para prosseguir com o cadastro</mat-error>
 
-        <button type="submit" mat-raised-button color="primary" class="input-margin-top" [disabled]="!formulario.form.valid">Cadastrar-se agora!</button>
+        <button type="submit" mat-raised-button color="primary" class="input-margin-top btn-cd-tp btn-md-right" [disabled]="!formulario.form.valid">Cadastrar-se agora!</button>
     </form>
   </div>

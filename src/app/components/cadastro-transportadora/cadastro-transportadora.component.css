@@ -5,3 +5,9 @@
     flex: 1;
     flex-direction: column;
 }
+button.btn-md-right{
+    width: 250px;
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+}

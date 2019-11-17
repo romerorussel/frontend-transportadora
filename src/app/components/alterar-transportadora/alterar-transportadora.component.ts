@@ -65,7 +65,6 @@ export class AlterarTransportadoraComponent implements OnInit {
   buscarTransportadora(id: number){
     this.service.getTransportadoraPorId(id).subscribe(response => {
       this.transportadoraModel = response;
-      console.log(this.transportadoraModel);
     })
   }
 

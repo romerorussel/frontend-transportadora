@@ -3,11 +3,13 @@
       [colspan]="tiles[2].cols"
       [rowspan]="tiles[2].rows"
       [style.background]="tiles[2].color">
+      <div style="width: 98%;">
       <header class="header-app">
-        <h1>Transportadoras |</h1>
-        <button routerLink="/cadastro" mat-raised-button color="primary">Cadastre sua transportadora</button>
-        
+        <h1>Transportadoras</h1>
+        <button routerLink="/cadastro" mat-raised-button color="primary" class="btn-cd-tp">Cadastre sua transportadora</button>
       </header>
+      <hr />
+      </div>
       
   </mat-grid-tile>
   <mat-grid-tile
@@ -16,20 +18,81 @@
       [style.background]="tiles[0].color">
 
       <aside id="aside-left">
-        <h3 class="title-left">Transportadoras</h3>
-        <mat-chip-list aria-label="Resultados transportadoras">
-            <mat-chip color="primary" selected>Resultados</mat-chip>
-        </mat-chip-list>
+        <div>
+          <h3 class="title-left">Pesquisar Transportadora(s)</h3>
+          <span class="numero-resultados">{{qtdResultado}} resultados</span>
+          <mat-chip-list aria-label="Resultados transportadoras">
+            <mat-chip *ngIf="filtroModel.nome"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="removeFiltroNome(filtroModel.nome)">
+              {{filtroModel.nome}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+
+            <mat-chip
+              *ngIf="filtroModel.uf"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="removeFiltroUf(filtroModel.uf)">
+              {{filtroModel.uf}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+
+            <mat-chip
+              *ngIf="filtroModel.cidade"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="removeFiltroCidade(filtroModel.cidade)">
+              {{filtroModel.cidade}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+
+            <mat-chip
+              *ngIf="filtroModel.modal"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="removeFiltroModal(filtroModel.modal)">
+              {{filtroModel.modal}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+
+          </mat-chip-list>
+          <hr class="marginTop10" />
+        </div>
+
         <div class="filtros">
         
           <form class="filtro-pesquisa">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Favorite food" value="Sushi">
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-form-field>
+              <input matInput placeholder="Digite o nome" #nome="ngModel" [(ngModel)]="filtroModel.nome" minlength="4" maxlength="50" name="nome">
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="pesquisaTransportadoraFiltro()">
                   <mat-icon>search</mat-icon>
               </button>
             </mat-form-field>
           </form>
+
+          <div class="list-filtros">
+
+            <div id="container-uf">
+              <ul>
+                <h4>Localização (UFs)</h4>
+                <li *ngFor="let uf of arrayUfs"><span (click)="addChipUf(uf)">{{uf}}</span></li>
+              </ul>
+            </div>
+            <div id="container-municipio">
+              <ul>
+                  <h4>Localização (Municípios)</h4>
+                  <li *ngFor="let cidade of arrayCidades"><span (click)="addChipCidade(cidade)">{{cidade}}</span></li>
+              </ul>
+            </div>
+              <div id="container-modal">
+                <ul>
+                  <h4>Modal</h4>
+                  <li *ngFor="let modal of arrayModais"><span (click)="addChipModal(modal)">{{modal}}</span></li>
+                </ul>
+              </div>
+            </div>
         </div>
       </aside>
   </mat-grid-tile>
@@ -44,20 +107,20 @@
             <tbody>
               <tr>
                 <td>Logo</td>
-                <td><a [routerLink]="['/transportadora/alterar', transportadora.id]">{{transportadora.nome}}</a></td>
+                <td class="width100"><a [routerLink]="['/transportadora/alterar', transportadora.id]">{{transportadora.nome}}</a></td>
                 <td class="telefoneWpp">{{transportadora.telefone | mask: '(00)0000-0000'}} {{transportadora.celular | mask: '(00)00000-0000'}}</td>
-                <td class="telefoneWpp" *ngIf="transportadora.whatsapp">Whatsapp Fale agora: <a href="#">{{transportadora.whatsapp | mask: '(00)0000-0000'}}</a></td>
+                <td class="telefoneWpp" *ngIf="transportadora.whatsapp"><p><i class="material-icons media-social-icon">local_phone</i>Fale agora: <a href="https://api.whatsapp.com/send?phone=5581988273662&text=Ol%C3%A1%20eu%20sou%20o%20Romero%2C%20voc%C3%AA%20est%C3%A1%20testando%20a%20minha%20aplica%C3%A7%C3%A3o%20%3F" target="_blank">{{transportadora.whatsapp | mask: '(00)0000-0000'}}</a></td>
               </tr>
               <tr>
                 <td></td>
-                <td>{{transportadora.cep | mask: '00000-000'}}</td>
+                <td class="width100">{{transportadora.cep | mask: '00000-000'}}</td>
                 <td>{{transportadora.email}}</td>
               </tr>
             </tbody>
           </table>
         </mat-card>
       </div>
-      <div class="semTransportadoras" *ngIf="transportadoras.length == 0">
+      <div class="semTransportadoras" *ngIf="transportadoras.length == 0 && qtdResultado == 0">
         <span>Não existe nenhuma transportadora cadastrada</span>
       </div>
       
