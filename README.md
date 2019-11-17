@@ -18,8 +18,8 @@ Esta tela possui os seguintes filtros para realizar a pesquisa:
  - Município
  - Tipo do modal => Rodoviário, Aquaviário ou Aéreo
 
-Abaixo segue um exemplo da tela:
-https://drive.google.com/file/d/15QBLsi99wZjCyYUc1zWydETq-DQB5-7a/view?usp=sharing
+Segue um exemplo da tela:
+!https://drive.google.com/file/d/15QBLsi99wZjCyYUc1zWydETq-DQB5-7a/view?usp=sharing
 
 ## Tela de Cadastro de Transportadora
 Para acessá-la basta navegar até a rota: [localhost:4200/cadastro](localhost:4200/cadastro)
@@ -38,9 +38,8 @@ Os campos obrigatórios são:
  - UF
  - Concordar com os Termos de Uso
 
-Abaixo segue um exemplo da tela:
-![
-](https://lh3.googleusercontent.com/__GrydDS2YrImN46AzPjTFQ2bDAhVhJ-wmjBo8KbYE3Cv66EUr92QTW5FV9Sy9htcafuV44QSXAe "tela de cadastro")
+Segue um exemplo da tela:
+https://drive.google.com/file/d/1WAfaYPCXSoMsyFYBU98CXUpeS7CREeuZ/view?usp=sharing
 
 ## Tela Alterar / Deletar Transportadora
 
@@ -61,21 +60,19 @@ Os campos obrigatórios são:
  - Cidade
  - UF
  
-Abaixo segue um exemplo da tela:
-![
-](https://lh3.googleusercontent.com/UZdgzTEsx5a61lY2g5Prfy_2yvczJSOCGRXoWFxGtCYtSnGPaol15laC_240MK4AzoHjwTpzkWAg "tela de alterar")
+Segue um exemplo da tela:
+https://drive.google.com/file/d/1sjzelT54NoIz0LCbF8RGP7rxyDbshq3W/view?usp=sharing
 
 ## Tela inicial sem registros
 
 É possível que ao acessar o sistema pela primeira vez será exibida tela inicial sem os devidos dados cadastrados, neste caso o usuário deverá seguir os passos do cadastramento de uma nova transportadora.
 
-Abaixo segue um exemplo da tela:
-![enter image description here](https://lh3.googleusercontent.com/fOhk0n5-zv7OI7oKpaBMw6W-mRge4UUU80Z6bHoCdoWpHfceYLRPHhGTSu0j8saxzQVn6P1Uwosc "tela sem registros")
+Segue um exemplo da tela:
+https://drive.google.com/file/d/13n3RfLnocAYfhmZfD3Ne58OT-SHG_Zg8/view?usp=sharing
 
 
 ## Tela de rota não encontrada
 Se o usuário tentar acessar uma rota que não existe no sistema ele será direcionado a tela de page not found.
 
-Abaixo segue um exemplo da tela:
-![
-](https://lh3.googleusercontent.com/mH8I-j1RDPBvX6WyJopncBWZEss3NKvwvRkBoyvySUY15XqTjbjIa8kSDSsqGH2SCkmK2nQ683Yq "rota não encontrada")
+Segue um exemplo da tela:
+https://drive.google.com/file/d/1gOnXhBFaLi-HgiqCFpupiLqtt9L92SlK/view?usp=sharing
