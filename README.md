@@ -7,7 +7,7 @@ Este aplicativo possui as seguintes operações:
  - Exclusão de transportadora
  - Cadastramento de novas transportadoras.
 
-Para inicializar o aplicativo é necessário que o usuário navega até a pasta padrão do projeto via CMD e execute o seguinte comando `ng serve`
+Para inicializar o aplicativo é necessário que o usuário navegue até a pasta padrão do projeto via CMD e execute o seguinte comando `ng serve`
 
 # Tela Inicial Consulta Parametrizada
 Para acessá-la basta navegar até a rota inicial do sistema [localhost:4200/](localhost:4200/)
