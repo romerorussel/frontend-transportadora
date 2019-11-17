@@ -19,7 +19,7 @@ Esta tela possui os seguintes filtros para realizar a pesquisa:
  - Tipo do modal => Rodoviário, Aquaviário ou Aéreo
 
 Abaixo segue um exemplo da tela:
-https://drive.google.com/file/d/15QBLsi99wZjCyYUc1zWydETq-DQB5-7a/view?usp=sharing
+https://drive.google.com/open?id=15QBLsi99wZjCyYUc1zWydETq-DQB5-7a
 
 ## Tela de Cadastro de Transportadora
 Para acessá-la basta navegar até a rota: [localhost:4200/cadastro](localhost:4200/cadastro)
