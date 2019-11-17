@@ -40,7 +40,7 @@ export class CadastroTransportadoraComponent implements OnInit {
 
       }else{
 
-        //Retorna mensagem do tipo Toast para o usuário informando que o cadastro foi realizado com sucesso
+        //Retorna mensagem do tipo Toast para o usuário informando que o cadastro não foi realizado com sucesso
         this.toastrService.error("Contate o suporte para mais informações", 'Ooops algo deu errado...', {
           timeOut: 5000
 

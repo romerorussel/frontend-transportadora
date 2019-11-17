@@ -30,8 +30,9 @@ const appRoutes: Routes = [
     path: 'cadastro',
     component: CadastroTransportadoraComponent
   },
+  { path: 'transportadora/alterar/:id' , component: AlterarTransportadoraComponent},
   { path: '**', component: PagenotfoundComponent },
-  { path: 'transportadora/alterar/:id' , component: AlterarTransportadoraComponent}
+  
 ];
 
 

@@ -7,3 +7,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     text-decoration: none;
     color: #fff;
 }
+.input-small {
+    width: 50%;
+}
+.input-margin-top{
+    margin-top: 20px;
+}

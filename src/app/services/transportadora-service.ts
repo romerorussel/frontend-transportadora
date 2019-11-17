@@ -11,6 +11,10 @@ export class TransportadoraService {
   private header = new HttpHeaders();
   constructor(private http: HttpClient) { }
 
+  getTransportadoraPorId(id: number){
+    return this.http.get<Transportadora>(`${this.baseURL}/transportadora/${id}`);
+  }
+
   getTransportadoras(): Observable<Transportadora[]> {
     return this.http.get<Transportadora[]>(`${this.baseURL}/transportadoras`);
   }
@@ -25,5 +29,13 @@ export class TransportadoraService {
 
   cadastrar(transportadora: Transportadora){
     return this.http.post(`${this.baseURL}/transportadora/cadastrar`, transportadora);
+  }
+
+  deletar(id: number){
+    return this.http.delete(`${this.baseURL}/transportadora/deletar/${id}`);
+  }
+
+  atualizar(id: number, transportadoraAtualizar: Transportadora){
+    return this.http.post(`${this.baseURL}/transportadora/atualizar/${id}`, transportadoraAtualizar)
   }
 }

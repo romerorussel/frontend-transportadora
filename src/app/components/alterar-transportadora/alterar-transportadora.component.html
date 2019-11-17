@@ -1,1 +1,89 @@
-<p>alterar-transportadora works!</p>
+<div class="form-alterar">
+    <form #formulario="ngForm">
+        <mat-form-field>
+                <input matInput email placeholder="Digite seu e-mail" #email="ngModel" [(ngModel)]="transportadoraModel.email" [value]="transportadoraModel.email" name="email" required>
+                <mat-error *ngIf="email">Digite um email válido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Nome" maxlength="50" required #nome="ngModel" [(ngModel)]="transportadoraModel.nome" name="nome" [value]="transportadoraModel.nome">
+            <mat-hint align="end">{{nome.value?.length || 0}}/50</mat-hint>
+            <mat-error *ngIf="nome.invalid">O campo nome é obrigatório</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput placeholder="Empresa" maxlength="50" required #empresa="ngModel" [(ngModel)]="transportadoraModel.empresa" name="empresa" [value]="transportadoraModel.empresa">
+            <mat-hint align="end">{{empresa.value?.length || 0}}/50</mat-hint>
+            <mat-error *ngIf="empresa.invalid">O campo empresa é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Telefone (xx)xxxx-xxxx" mask="(00)0000-0000" minlength="8" maxlength="14" required #telefone="ngModel" [(ngModel)]="transportadoraModel.telefone" name ="telefone" [value]="transportadoraModel.telefone">
+            <mat-error *ngIf="telefone.invalid">O campo telefone é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Celular" #celular="ngModel" [(ngModel)]="transportadoraModel.celular" name="celular" minlength="9" mask="(00)00000-0000" maxlength="14" [value]="transportadoraModel.celular">
+                <mat-error *ngIf="celular.invalid">O número de celular está inválido verifique se digitou corretamente</mat-error>
+        </mat-form-field>
+
+        <mat-form-field >
+                <input matInput placeholder="Whatsapp" mask="(00)00000-0000" minlength="9" maxlength="14" #whatsapp="ngModel" [(ngModel)]="transportadoraModel.whatsapp" name="whatsapp" [value]="transportadoraModel.whatsapp">
+                <mat-error *ngIf="whatsapp.invalid">O número do whatsapp está inválido verifique se digitou corretamente</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input-small">
+            <mat-select placeholder="Modal" required #modal="ngModel" [(ngModel)]="transportadoraModel.modal" name="modal" [value]="transportadoraModel.modal">
+              <mat-option value="Rodoviário">Rodoviário</mat-option>
+              <mat-option value="Aquaviário">Aquaviário</mat-option>
+              <mat-option value="Aéreo">Aéreo</mat-option>       
+            </mat-select>
+            <mat-hint align="end">Selecione o modal de transporte</mat-hint>
+            <mat-error *ngIf="modal.invalid">O campo modal é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input-small">
+                <input matInput placeholder="CEP" (focusout)="buscarEndereco()" mask="00000-000" minlength="8" required #cep="ngModel" [(ngModel)]="transportadoraModel.cep" name="cep" [value]="transportadoraModel.cep">
+                <mat-hint align="end">{{cep.value?.length || 0}}/9</mat-hint>
+                <mat-error *ngIf="cep.invalid">O campo cep é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input-small">
+            <mat-select placeholder="UF" required #uf="ngModel" [(ngModel)]="transportadoraModel.uf" name="uf" [value]="transportadoraModel.uf">
+                <mat-option *ngFor="let mesorregiao of mesorregioes" [value]="mesorregiao">{{mesorregiao}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="uf.invalid">O campo uf é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Cidade" maxlength="50" required #cidade="ngModel" [(ngModel)]="transportadoraModel.cidade" name="cidade" [value]="transportadoraModel.cidade">
+                <mat-hint align="end">{{cidade.value?.length || 0}}/50</mat-hint>
+                <mat-error *ngIf="cidade.invalid">O campo cidade é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Bairro" maxlength="50" required #bairro="ngModel" [(ngModel)]="transportadoraModel.bairro" name="bairro" [value]="transportadoraModel.bairro">
+                <mat-hint align="end">{{bairro.value?.length || 0}}/50</mat-hint>
+                <mat-error *ngIf="bairro.invalid">O campo bairro é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Rua / Avenida" maxlength="50" required #rua="ngModel" [(ngModel)]="transportadoraModel.rua" name="rua" [value]="transportadoraModel.rua">
+                <mat-hint align="end">{{rua.value?.length || 0}}/50</mat-hint>
+                <mat-error *ngIf="rua.invalid">O campo rua / avenida é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input matInput placeholder="Número" maxlength="5" required #numero="ngModel" [(ngModel)]="transportadoraModel.numero" name="numero" [value]="transportadoraModel.numero">
+                <mat-hint align="end">{{numero.value?.length || 0}}/5</mat-hint>
+                <mat-error *ngIf="numero.invalid">O campo número é obrigatório</mat-error>
+        </mat-form-field>
+
+        <input id="singleFile" type="file" class="input-margin-top" #arquivo="ngModel" [(ngModel)]="transportadoraModel.arquivo" name="arquivo" (change)="upload($event)" />
+
+        <div class="button-group">
+            <button (click)="atualizar()" mat-raised-button color="primary" [disabled]="formulario.form.invalid" class="input-margin-top">Atualizar</button>
+            <button (click)="deletar()" mat-raised-button color="warn" class="input-margin-top">Deletar</button>
+        </div>
+    </form>
+  </div>

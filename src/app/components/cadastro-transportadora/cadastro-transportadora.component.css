@@ -5,9 +5,3 @@
     flex: 1;
     flex-direction: column;
 }
-.input-small {
-    width: 50%;
-}
-.input-margin-top{
-    margin-top: 20px;
-}

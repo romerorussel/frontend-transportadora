@@ -38,24 +38,27 @@
       [rowspan]="tiles[1].rows"
       [style.background]="tiles[1].color">
 
-      <div class="cards-transportadoras">
+      <div class="cards-transportadoras" *ngIf="transportadoras.length > 0">
         <mat-card *ngFor="let transportadora of transportadoras" class="mat-card">
           <table>
             <tbody>
               <tr>
                 <td>Logo</td>
-                <td><a [routerLink]="['/transportadora/alterar/', transportadora.id]">{{transportadora.nome}}</a></td>
-                <td>{{transportadora.telefone}}</td>
-                <td>Whatsapp Fale agora: <a href="#">{{transportadora.telefone}}</a></td>
+                <td><a [routerLink]="['/transportadora/alterar', transportadora.id]">{{transportadora.nome}}</a></td>
+                <td class="telefoneWpp">{{transportadora.telefone | mask: '(00)0000-0000'}} {{transportadora.celular | mask: '(00)00000-0000'}}</td>
+                <td class="telefoneWpp" *ngIf="transportadora.whatsapp">Whatsapp Fale agora: <a href="#">{{transportadora.whatsapp | mask: '(00)0000-0000'}}</a></td>
               </tr>
               <tr>
                 <td></td>
-                <td>{{transportadora.cep}}</td>
+                <td>{{transportadora.cep | mask: '00000-000'}}</td>
                 <td>{{transportadora.email}}</td>
               </tr>
             </tbody>
           </table>
         </mat-card>
+      </div>
+      <div class="semTransportadoras" *ngIf="transportadoras.length == 0">
+        <span>Não existe nenhuma transportadora cadastrada</span>
       </div>
       
   </mat-grid-tile>
