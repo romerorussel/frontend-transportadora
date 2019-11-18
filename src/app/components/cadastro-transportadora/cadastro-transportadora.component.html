@@ -1,5 +1,5 @@
 <div class="form-cadastro">
-    <form (ngSubmit)="onSubmit()" #formulario="ngForm">
+    <form (ngSubmit)="onSubmit(formulario);" #formulario="ngForm">
         <mat-form-field>
                 <input matInput email placeholder="Digite seu e-mail" #email="ngModel" [(ngModel)]="transportadoraModel.email" name="email" required>
                 <mat-error *ngIf="email">Digite um email válido</mat-error>

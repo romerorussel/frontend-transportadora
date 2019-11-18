@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Transportadora} from '../../models/transportadora'
 import { TransportadoraService } from '../../services/transportadora-service';
 import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro-transportadora',
@@ -28,7 +29,7 @@ export class CadastroTransportadoraComponent implements OnInit {
     this.buscarMesorregioes();
   }
 
-  onSubmit(){
+  onSubmit(formulario: NgForm){
 
     this.service.cadastrar(this.transportadoraModel).subscribe(response => {
       if(response.success){
@@ -37,6 +38,8 @@ export class CadastroTransportadoraComponent implements OnInit {
         this.toastrService.success('Seu cadastro foi realizado com sucesso.', 'Aeehoo!', {
           timeOut: 5000
         });
+        //Reseta todo o formulário em caso do cadastro ser realizado com sucesso.
+        formulario.resetForm();
         
       }else{
 
